@@ -51,7 +51,7 @@ function PageNav() {
                 className={styles.buttons}
                 onClick={async () => {
                   await fetch(
-                    "https://worldwise-production-0b53.up.railway.app/auth/logout",
+                    "https://worldwise-production-0b53.up.railway.app/api/auth/logout",
                     {
                       method: "POST",
                       credentials: "include",
