@@ -1,0 +1,22 @@
+.hamburger {
+  width: 30px;
+  height: 22px;
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 4px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 848px) {
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

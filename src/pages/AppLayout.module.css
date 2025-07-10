@@ -1,0 +1,13 @@
+.app {
+  height: 100vh;
+  padding: 2.4rem;
+  overscroll-behavior-y: none;
+  display: flex;
+  position: relative;
+}
+
+@media screen and (max-width: 676px) {
+  .app {
+    flex-direction: column;
+  }
+}

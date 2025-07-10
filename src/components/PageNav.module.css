@@ -1,0 +1,80 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list_items {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.list_items li {
+  padding: 0 1rem !important;
+}
+.nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.list_items a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.nav .a:link,
+.nav a:visited {
+  text-decoration: none;
+  color: var(--color-light--2);
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* CSS Modules feature */
+.nav a:global(.active) {
+  color: var(--color-brand--2);
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 850px) {
+  .list_items {
+    margin: 1rem 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+  }
+
+  .Hamburger_list_items {
+    display: none;
+  }
+}
+
+.list_items li {
+  height: 4rem;
+}
+a.ctaLink:link,
+a.ctaLink:visited {
+  background-color: var(--color-brand--2);
+  color: var(--color-dark--0);
+  padding: 0.8rem 2rem;
+  border-radius: 7px;
+}
+
+.buttons {
+  background-color: var(--color-brand--2);
+  color: var(--color-dark--0);
+  padding: 0.8rem 2rem;
+  border-radius: 7px;
+  cursor: pointer;
+}
