@@ -10,7 +10,7 @@ export function AuthProvider({ children }) {
     async function fetchUser() {
       try {
         let res = await fetch(
-          "https://worldwise-production-0b53.up.railway.app/getUser",
+          "https://worldwise-production-0b53.up.railway.app/api/auth/getUser",
           {
             credentials: "include",
           }

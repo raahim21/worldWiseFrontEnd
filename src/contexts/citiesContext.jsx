@@ -12,7 +12,7 @@ function ProvideCities({ children }) {
   async function fetchCities() {
     try {
       setIsLoading(true);
-      const res = await fetch(`${BASE_URL}/user-cities`, {
+      const res = await fetch(`${BASE_URL}/api/cities/user-cities`, {
         credentials: "include", // include cookie,
         method: "GET",
       });
@@ -34,7 +34,10 @@ function ProvideCities({ children }) {
     async function fetchCities() {
       try {
         setIsLoading(true);
-        const res = await fetch(`${BASE_URL}/cities/${id}`);
+        const res = await fetch(`${BASE_URL}/api/cities/${id}`, {
+          credentials: "include",
+          method: "GET",
+        });
         const data = await res.json();
         setCurrentCity(data);
         setIsLoading(false);

@@ -19,7 +19,7 @@ export default function Login() {
 
     try {
       const res = await fetch(
-        "https://worldwise-production-0b53.up.railway.app/login",
+        "https://worldwise-production-0b53.up.railway.app/auth/login",
         {
           method: "POST",
           headers: {
