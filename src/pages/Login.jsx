@@ -4,6 +4,7 @@ import PageNav from "../components/PageNav";
 
 import { useAuth } from "../contexts/AuthContext";
 import { Navigate } from "react-router-dom";
+import Button from "../components/Button";
 
 export default function Login() {
   const { user, isLoading } = useAuth();
@@ -19,7 +20,7 @@ export default function Login() {
 
     try {
       const res = await fetch(
-        "https://worldwise-production-0b53.up.railway.app/auth/login",
+        "https://worldwise-production-0b53.up.railway.app/api/auth/login",
         {
           method: "POST",
           headers: {
@@ -68,7 +69,7 @@ export default function Login() {
         </div>
 
         <div>
-          <button>Login</button>
+          <Button type="primary">Login</Button>
         </div>
       </form>
     </main>
