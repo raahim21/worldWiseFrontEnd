@@ -8,6 +8,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { useState } from "react";
 
 function PageNav() {
+  const [isLogoutLoading, setisLogoutLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { user, isLoading } = useAuth();
 
@@ -49,6 +50,7 @@ function PageNav() {
               <Button
                 type="primary"
                 onClick={async () => {
+                  setisLogoutLoading(true);
                   await fetch(
                     "https://worldwise-production-0b53.up.railway.app/api/auth/logout",
                     {
@@ -56,10 +58,11 @@ function PageNav() {
                       credentials: "include",
                     }
                   );
+                  setisLogoutLoading(false);
                   window.location.href = "/";
                 }}
               >
-                Logout
+                {isLogoutLoading ? <Spinner /> : "Logout"}
               </Button>
             </li>
           )}
@@ -100,6 +103,7 @@ function PageNav() {
               <Button
                 type="primary"
                 onClick={async () => {
+                  setisLogoutLoading(true);
                   await fetch(
                     "https://worldwise-production-0b53.up.railway.app/api/auth/logout",
                     {
@@ -107,10 +111,11 @@ function PageNav() {
                       credentials: "include",
                     }
                   );
+                  setisLogoutLoading(false);
                   window.location.href = "/";
                 }}
               >
-                Logout
+                {isLogoutLoading ? <Spinner /> : "Logout"}
               </Button>
             </li>
           )}
