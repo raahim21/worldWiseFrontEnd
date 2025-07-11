@@ -3,10 +3,11 @@ import { useState } from "react";
 import PageNav from "../components/PageNav";
 
 import { useAuth } from "../contexts/AuthContext";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 
 export default function Login() {
+  let navigate = useNavigate();
   const { user, isLoading } = useAuth();
   let expression = isLoading ? "Loading..." : user;
   console.log(expression);
@@ -36,7 +37,7 @@ export default function Login() {
         throw new Error(data.message || "Login failed");
       }
       // window.location.href = "/app/cities";
-      <Navigate to="/app/cities" />;
+      navigate("/login");
     } catch (err) {
       console.error("Login failed:", err.message);
       alert("Invalid email or password");
