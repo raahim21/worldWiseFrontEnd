@@ -36,8 +36,7 @@ export default function Login() {
       if (!res.ok) {
         throw new Error(data.message || "Login failed");
       }
-      // window.location.href = "/app/cities";
-      navigate("/");
+      window.location.href = "/";
     } catch (err) {
       console.error("Login failed:", err.message);
       alert("Invalid email or password");
