@@ -57,7 +57,7 @@ function PageNav() {
                       credentials: "include",
                     }
                   );
-                  navigate("/login");
+                  window.location.href = "/";
                 }}
               >
                 Logout
