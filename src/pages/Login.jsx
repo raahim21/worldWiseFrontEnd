@@ -2,12 +2,12 @@ import styles from "./Login.module.css";
 import { useState } from "react";
 import PageNav from "../components/PageNav";
 
+import Spinner from "../components/Spinner";
 import { useAuth } from "../contexts/AuthContext";
-import { Navigate, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 
 export default function Login() {
-  let navigate = useNavigate();
+  const [isFormLoading, setIsFormLoading] = useState(false);
   const { user, isLoading } = useAuth();
   let expression = isLoading ? "Loading..." : user;
   console.log(expression);
@@ -20,6 +20,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
+      setIsFormLoading(true);
       const res = await fetch(
         "https://worldwise-production-0b53.up.railway.app/api/auth/login",
         {
@@ -36,6 +37,7 @@ export default function Login() {
       if (!res.ok) {
         throw new Error(data.message || "Login failed");
       }
+      setIsFormLoading(false);
       window.location.href = "/";
     } catch (err) {
       console.error("Login failed:", err.message);
@@ -71,6 +73,7 @@ export default function Login() {
         <div>
           <Button type="primary">Login</Button>
         </div>
+        {isFormLoading ? <Spinner /> : ""}
       </form>
     </main>
   );

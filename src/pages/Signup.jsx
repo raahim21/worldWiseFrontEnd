@@ -3,9 +3,11 @@ import { useState } from "react";
 import PageNav from "../components/PageNav";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import Spinner from "../components/Spinner";
 
 export default function Login() {
   // PRE-FILL FOR DEV PURPOSES
+  let [isFormLoading, setIsFormLoading] = useState(false);
   const [email, setEmail] = useState("jack@example.com");
   const [password, setPassword] = useState("qwerty");
   const [passwordAgain, setPasswordAgain] = useState("qwerty");
@@ -15,6 +17,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
+      setIsFormLoading(true);
       const res = await fetch(
         "https://worldwise-production-0b53.up.railway.app/api/auth/signup",
 
@@ -27,6 +30,7 @@ export default function Login() {
         }
       );
       const data = await res.json();
+      setIsFormLoading(false);
       navigate("/login");
       if (!res.ok) {
         throw new Error(data.message);
@@ -71,6 +75,7 @@ export default function Login() {
         <div>
           <Button type="primary">Sign up</Button>
         </div>
+        {isFormLoading ? <Spinner /> : ""}
       </form>
     </main>
   );

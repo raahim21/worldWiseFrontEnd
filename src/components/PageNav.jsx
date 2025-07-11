@@ -1,17 +1,16 @@
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./PageNav.module.css";
 import Button from "./Button";
 import Logo from "./Logo";
 import Hamburger from "./Hamburger";
-
+import Spinner from "./Spinner";
 import { useAuth } from "../contexts/AuthContext";
 import { useState } from "react";
 
 function PageNav() {
-  const navigate = useNavigate();
-
   const [isOpen, setIsOpen] = useState(false);
-  let { user, isLoading } = useAuth();
+  const { user, isLoading } = useAuth();
+
   return (
     <>
       <nav className={styles.nav}>
@@ -23,23 +22,22 @@ function PageNav() {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-
           <li>
             <NavLink to="/product">Product</NavLink>
           </li>
-
           <li>
             <NavLink to="/pricing">Pricing</NavLink>
           </li>
 
-          {!user ? (
+          {isLoading ? (
+            <Spinner />
+          ) : !user ? (
             <>
               <li>
                 <NavLink className={styles.ctaLink} to="/login">
                   Login
                 </NavLink>
               </li>
-
               <li>
                 <NavLink className={styles.ctaLink} to="/signup">
                   Signup
@@ -69,28 +67,28 @@ function PageNav() {
 
         <Hamburger onClick={() => setIsOpen(!isOpen)} />
       </nav>
-      {isOpen ? (
+
+      {isOpen && (
         <div className={`${styles.list_items}`}>
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-
           <li>
             <NavLink to="/product">Product</NavLink>
           </li>
-
           <li>
             <NavLink to="/pricing">Pricing</NavLink>
           </li>
 
-          {!user ? (
+          {isLoading ? (
+            <Spinner />
+          ) : !user ? (
             <>
               <li>
                 <NavLink className={styles.ctaLink} to="/login">
                   Login
                 </NavLink>
               </li>
-
               <li>
                 <NavLink className={styles.ctaLink} to="/signup">
                   Signup
@@ -109,17 +107,14 @@ function PageNav() {
                       credentials: "include",
                     }
                   );
-                  navigate("/");
+                  window.location.href = "/";
                 }}
               >
-                {" "}
                 Logout
               </Button>
             </li>
           )}
         </div>
-      ) : (
-        ""
       )}
     </>
   );
