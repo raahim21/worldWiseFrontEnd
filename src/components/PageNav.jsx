@@ -1,5 +1,6 @@
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import styles from "./PageNav.module.css";
+import Button from "./Button";
 import Logo from "./Logo";
 import Hamburger from "./Hamburger";
 
@@ -47,8 +48,8 @@ function PageNav() {
             </>
           ) : (
             <li>
-              <button
-                className={styles.buttons}
+              <Button
+                type="primary"
                 onClick={async () => {
                   await fetch(
                     "https://worldwise-production-0b53.up.railway.app/api/auth/logout",
@@ -61,7 +62,7 @@ function PageNav() {
                 }}
               >
                 Logout
-              </button>
+              </Button>
             </li>
           )}
         </div>
@@ -98,11 +99,11 @@ function PageNav() {
             </>
           ) : (
             <li>
-              <button
-                className={styles.buttons}
+              <Button
+                type="primary"
                 onClick={async () => {
                   await fetch(
-                    "https://worldwise-production-0b53.up.railway.app/logout",
+                    "https://worldwise-production-0b53.up.railway.app/api/auth/logout",
                     {
                       method: "POST",
                       credentials: "include",
@@ -111,8 +112,9 @@ function PageNav() {
                   navigate("/");
                 }}
               >
+                {" "}
                 Logout
-              </button>
+              </Button>
             </li>
           )}
         </div>
