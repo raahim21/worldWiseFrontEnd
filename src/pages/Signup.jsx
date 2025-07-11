@@ -2,6 +2,7 @@ import styles from "./Login.module.css";
 import { useState } from "react";
 import PageNav from "../components/PageNav";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 export default function Login() {
   // PRE-FILL FOR DEV PURPOSES
@@ -15,7 +16,7 @@ export default function Login() {
 
     try {
       const res = await fetch(
-        "https://worldwise-production-0b53.up.railway.app/auth/signup",
+        "https://worldwise-production-0b53.up.railway.app/api/auth/signup",
 
         {
           method: "POST",
@@ -68,7 +69,7 @@ export default function Login() {
         </div>
 
         <div>
-          <button>Login</button>
+          <Button type="primary">Sign up</Button>
         </div>
       </form>
     </main>

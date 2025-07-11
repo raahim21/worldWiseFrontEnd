@@ -108,7 +108,7 @@ function PageNav() {
                       credentials: "include",
                     }
                   );
-                  window.location.href = "/login"; // or use navigate("/login")
+                  navigate("/");
                 }}
               >
                 Logout
