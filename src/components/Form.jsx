@@ -55,7 +55,7 @@ function Form() {
     setIsFormLoading(true);
     let req = await fetch(
       // change
-      "https://worldwise-production-0b53.up.railway.app/api/cities",
+      `https://worldwise-production-0b53.up.railway.app/api/cities/`,
       {
         credentials: "include",
         method: "POST",

@@ -18,7 +18,7 @@ function CityItem({ city }) {
     e.preventDefault();
     e.stopPropagation();
     let req = await fetch(
-      `https://worldwise-production-0b53.up.railway.app/delete-city/${cityID}`,
+      `https://worldwise-production-0b53.up.railway.app/delete/${cityID}`,
       {
         method: "POST",
         credentials: "include",
