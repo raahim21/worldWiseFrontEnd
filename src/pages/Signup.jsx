@@ -87,7 +87,7 @@ import { toast } from "react-toastify";
 import PageNav from "../components/PageNav";
 import Button from "../components/Button";
 import Spinner from "../components/Spinner";
-import styles from "./Login.module.css"; // Reusing Login styles
+import styles from "./Login.module.css";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function Signup() {
@@ -137,9 +137,9 @@ export default function Signup() {
 
     try {
       setIsFormLoading(true);
-      await signup(email, password); // Use AuthContext signup
+      await signup(email, password);
       toast.success("Account created successfully!");
-      navigate("/app", { replace: true }); // Redirect to app after signup
+      navigate("/app", { replace: true });
     } catch (err) {
       toast.error(err.message);
     } finally {

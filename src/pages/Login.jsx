@@ -79,14 +79,14 @@
 //   );
 // }
 
-import styles from "./Login.module.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import PageNav from "../components/PageNav";
-import Spinner from "../components/Spinner";
-import { useAuth } from "../contexts/AuthContext";
 import Button from "../components/Button";
+import Spinner from "../components/Spinner";
+import styles from "./Login.module.css";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Login() {
   const { user, isLoading, login } = useAuth();
@@ -98,16 +98,24 @@ export default function Login() {
   // Redirect if already logged in
   useEffect(() => {
     if (!isLoading && user) {
-      navigate("/", { replace: true });
+      navigate("/app", { replace: true });
     }
   }, [user, isLoading, navigate]);
+
+  // Pre-fill for dev only
+  useEffect(() => {
+    if (import.meta.env.VITE_NODE_ENV !== "production") {
+      setEmail("jack@example.com");
+      setPassword("qwerty");
+    }
+  }, []);
 
   async function handleLogin(e) {
     e.preventDefault();
 
-    // Basic validation
+    // Client-side validation
     if (!email || !password) {
-      toast.error("Please enter both email and password");
+      toast.error("Please fill in all fields");
       return;
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
@@ -121,9 +129,9 @@ export default function Login() {
 
     try {
       setIsFormLoading(true);
-      await login(email, password); // Use AuthContext login
+      await login(email, password);
       toast.success("Login successful!");
-      navigate("/", { replace: true });
+      navigate("/app", { replace: true });
     } catch (err) {
       toast.error(err.message);
     } finally {
@@ -164,6 +172,7 @@ export default function Login() {
             {isFormLoading ? "Logging in..." : "Login"}
           </Button>
         </div>
+        {isFormLoading && <Spinner />}
       </form>
     </main>
   );
