@@ -75,47 +75,53 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Homepage />} />
-        <Route path="product" element={<Product />} />
-        <Route path="pricing" element={<Pricing />} />
-        <Route
-          path="app"
-          element={
-            isLoading ? null : user ? (
-              <AppLayout />
-            ) : (
-              <Navigate replace to="/login" />
-            )
-          }
-        >
-          <Route index element={<Navigate replace to="cities" />} />
-          <Route path="cities" element={<CityList />} />
-          <Route path="cities/:id" element={<City />} />
-          <Route path="countries" element={<CountryList />} />
-          <Route path="form" element={<Form />} />
-        </Route>
-        <Route
-          path="login"
-          element={
-            isLoading ? null : user ? <Navigate replace to="/app" /> : <Login />
-          }
-        />
-        <Route
-          path="signup"
-          element={
-            isLoading ? null : user ? (
-              <Navigate replace to="/app" />
-            ) : (
-              <Signup />
-            )
-          }
-        />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Homepage />} />
+          <Route path="product" element={<Product />} />
+          <Route path="pricing" element={<Pricing />} />
+          <Route
+            path="app"
+            element={
+              isLoading ? null : user ? (
+                <AppLayout />
+              ) : (
+                <Navigate replace to="/login" />
+              )
+            }
+          >
+            <Route index element={<Navigate replace to="cities" />} />
+            <Route path="cities" element={<CityList />} />
+            <Route path="cities/:id" element={<City />} />
+            <Route path="countries" element={<CountryList />} />
+            <Route path="form" element={<Form />} />
+          </Route>
+          <Route
+            path="login"
+            element={
+              isLoading ? null : user ? (
+                <Navigate replace to="/app" />
+              ) : (
+                <Login />
+              )
+            }
+          />
+          <Route
+            path="signup"
+            element={
+              isLoading ? null : user ? (
+                <Navigate replace to="/app" />
+              ) : (
+                <Signup />
+              )
+            }
+          />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
       <ToastContainer position="top-right" autoClose={3000} />
-    </BrowserRouter>
+    </>
   );
 }
 
