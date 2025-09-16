@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import styles from "./CityItem.module.css";
 import { Link } from "react-router-dom";
 import { useCities } from "../contexts/citiesContext";
-
+import { toast } from "react-toastify";
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -14,22 +14,50 @@ function CityItem({ city }) {
   const { currentCity, fetchCities } = useCities();
   const { cityName, emoji, date, _id, position } = city;
 
+  // async function deleteCity(e, cityID) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   let req = await fetch(
+  //     `https://worldwise-production-0b53.up.railway.app/api/cities/delete/${cityID}`,
+  //     {
+  //       method: "POST",
+  //       credentials: "include",
+  //     }
+  //   );
+  //   let res = await req.json();
+
+  //   if (!res.ok) {
+  //     console.log("error here");
+  //   }
+  //   fetchCities();
+  // }
+
   async function deleteCity(e, cityID) {
     e.preventDefault();
     e.stopPropagation();
-    let req = await fetch(
-      `https://worldwise-production-0b53.up.railway.app/api/cities/delete/${cityID}`,
-      {
-        method: "POST",
-        credentials: "include",
-      }
-    );
-    let res = await req.json();
 
-    if (!res.ok) {
-      console.log("error here");
+    try {
+      const req = await fetch(
+        `https://worldwise-production-0b53.up.railway.app/api/cities/delete/${cityID}`,
+        {
+          method: "DELETE", // ✅ use DELETE if backend supports it
+          credentials: "include",
+        }
+      );
+
+      const res = await req.json();
+
+      if (!req.ok) {
+        toast.error(res.message || "Failed to delete city");
+        return;
+      }
+
+      toast.success("City deleted successfully!");
+      fetchCities();
+    } catch (err) {
+      toast.error("Network error. Please try again.");
+      console.error(err);
     }
-    fetchCities();
   }
   return (
     <li>
