@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
     async function fetchUser() {
       try {
         const res = await fetch(
-          `${import.meta.env.VITE_API_URL}/auth/getUser`,
+          `https://worldwise-production-0b53.up.railway.app/api/auth/getUser`,
           {
             method: "GET",
             credentials: "include",
