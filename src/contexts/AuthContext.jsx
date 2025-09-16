@@ -34,7 +34,7 @@ export function AuthProvider({ children }) {
   const login = async (email, password) => {
     try {
       const res = await fetch(
-        `https://worldwise-production-0b53.up.railway.app/auth/login`,
+        `https://worldwise-production-0b53.up.railway.app/api/auth/login`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -54,7 +54,7 @@ export function AuthProvider({ children }) {
   const signup = async (email, password) => {
     try {
       const res = await fetch(
-        `https://worldwise-production-0b53.up.railway.app/auth/signup
+        `https://worldwise-production-0b53.up.railway.app/api/auth/signup
 `,
         {
           method: "POST",
