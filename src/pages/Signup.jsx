@@ -98,6 +98,10 @@ export default function Signup() {
   const [passwordAgain, setPasswordAgain] = useState("");
   const [isFormLoading, setIsFormLoading] = useState(false);
 
+  useEffect(() => {
+    toast.info("Toast debug test!");
+  }, []);
+
   // Redirect if already logged in
   useEffect(() => {
     if (!isLoading && user) {
