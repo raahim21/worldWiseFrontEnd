@@ -15,6 +15,15 @@
   --color-light--3: #d6dee0;
 }
 
+.Toastify__toast-container {
+  z-index: 99999 !important;
+}
+
+.Toastify__toast {
+  font-size: 0.9rem;
+  border-radius: 6px;
+}
+
 * {
   margin: 0;
   padding: 0;
