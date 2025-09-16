@@ -153,7 +153,7 @@ import BackButton from "./BackButton";
 import Spinner from "./Spinner";
 import styles from "./Form.module.css";
 import { useCities } from "../contexts/citiesContext";
-import { useUrlPosition } from "../hooks/useUrlPosition";
+import useUrlPosition from "../hooks/useUrlPosition";
 
 export function convertToEmoji(countryCode) {
   if (!countryCode) return "";

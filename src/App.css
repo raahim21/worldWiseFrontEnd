@@ -5,6 +5,20 @@
   text-align: center;
 }
 
+main {
+  height: 100vh;
+  overflow: visible;
+}
+
+.app {
+  height: 100vh;
+  padding: 2.4rem;
+  overscroll-behavior-y: none;
+  display: flex;
+  position: relative;
+  overflow: visible;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
