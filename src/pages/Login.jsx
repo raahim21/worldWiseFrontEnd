@@ -86,9 +86,6 @@ export default function Login() {
         </div>
 
         <div>
-          <button onClick={() => toast.info("Manual test toast!")}>
-            Test Toast
-          </button>
           <Button type="primary" disabled={isFormLoading}>
             {isFormLoading ? "Logging in..." : "Login"}
           </Button>
