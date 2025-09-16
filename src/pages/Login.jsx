@@ -74,7 +74,6 @@ export default function Login() {
             disabled={isFormLoading}
           />
         </div>
-
         <div className={styles.row}>
           <label htmlFor="password">Password</label>
           <input
@@ -87,6 +86,9 @@ export default function Login() {
         </div>
 
         <div>
+          <button onClick={() => toast.info("Manual test toast!")}>
+            Test Toast
+          </button>
           <Button type="primary" disabled={isFormLoading}>
             {isFormLoading ? "Logging in..." : "Login"}
           </Button>
